@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const assignmentSchema = require('./Reaction');
+const reactionSchema = require('./Reaction');
 
 // Schema to create user model
 const userSchema = new Schema(
@@ -37,6 +37,6 @@ userSchema
     return `${friends.length}`;
   })
 
-const Student = model('user', userSchema);
+const User = model('user', userSchema);
 
-module.exports = Student;
+module.exports = User;
