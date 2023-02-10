@@ -1,26 +1,27 @@
+// This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
+
 const { Schema, Types } = require('mongoose');
 
 const reactionSchema = new Schema(
   {
-    assignmentId: {
+    reactionId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
     },
-    assignmentName: {
+    reactionBody: {
       type: String,
       required: true,
-      maxlength: 50,
-      minlength: 4,
-      default: 'Unnamed assignment',
+      maxlength: 280,
     },
-    score: {
+    userName: {
       type: Number,
       required: true,
-      default: () => Math.floor(Math.random() * (100 - 70 + 1) + 70),
     },
+    // Use a getter method to format the timestamp on query
     createdAt: {
       type: Date,
       default: Date.now,
+
     },
   },
   {
@@ -30,5 +31,10 @@ const reactionSchema = new Schema(
     id: false,
   }
 );
+
+
+reactionSchema.virtual('formattedDate').get(function() {
+  return this.createdAt.toLocaleDateString();
+});
 
 module.exports = assignmentSchema;
