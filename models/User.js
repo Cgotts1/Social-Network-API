@@ -16,6 +16,7 @@ const userSchema = new Schema(
       required: true,
       unique: true,
       // validate: [validateEmail, 'Please fill a valid email address'],
+      match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
     },
     // Array of `_id` values referencing the `Thought` model
     thoughts: [{type: Schema.Types.ObjectId, ref: "thought"}],    
@@ -34,7 +35,7 @@ userSchema
   .virtual('friendCount')
   // Getter
   .get(function () {
-    return `${friends.length}`;
+    return this.friends.length;
   })
 
 const User = model('user', userSchema);

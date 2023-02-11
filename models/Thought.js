@@ -8,8 +8,6 @@ const thoughtSchema = new Schema(
       required: true,
       minlength: 1,
       maxlength: 280,
-
-
     },
     createdAt: {
       type: Date,
@@ -45,7 +43,7 @@ thoughtSchema.virtual('formattedDate').get(function() {
 //   .virtual('reactionCount')
 //   // Getter
 //   .get(function () {
-//     return `${reactions.length}`;
+//     return reactions.length;
 //   })
 
 const Thought = model('thought', thoughtSchema);

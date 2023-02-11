@@ -32,7 +32,6 @@ const reactionSchema = new Schema(
   }
 );
 
-
 reactionSchema.virtual('formattedDate').get(function() {
   return this.createdAt.toLocaleDateString();
 });
