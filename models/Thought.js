@@ -41,12 +41,12 @@ thoughtSchema.virtual('formattedDate').get(function() {
   return this.createdAt.toLocaleDateString();
 });
 
-userSchema
-  .virtual('reactionCount')
-  // Getter
-  .get(function () {
-    return `${reactions.length}`;
-  })
+// userSchema
+//   .virtual('reactionCount')
+//   // Getter
+//   .get(function () {
+//     return `${reactions.length}`;
+//   })
 
 const Thought = model('thought', thoughtSchema);
 

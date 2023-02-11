@@ -15,12 +15,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      validate: [validateEmail, 'Please fill a valid email address'],
+      // validate: [validateEmail, 'Please fill a valid email address'],
     },
     // Array of `_id` values referencing the `Thought` model
-    thoughts: [_id],    
+    thoughts: [{type: Schema.Types.ObjectId, ref: "thought"}],    
     // Array of `_id` values referencing the `User` model (self-reference)
-    friends: [userSchema],
+    friends: [{type: Schema.Types.ObjectId, ref: "user"}],
   },
   {
     toJSON: {
