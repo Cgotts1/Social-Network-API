@@ -13,8 +13,8 @@ const reactionSchema = new Schema(
       required: true,
       maxlength: 280,
     },
-    userName: {
-      type: Number,
+    username: {
+      type: String,
       required: true,
     },
     // Use a getter method to format the timestamp on query

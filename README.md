@@ -7,11 +7,14 @@ N/A
 Whats working so far:
 
 User: post(email validation working), delete, put, get(all), get(single)
+Thoughts: post(Date format works), delete, put, get(all), get(single)
 
 
 
 Whats not working so far:
-User: createdAt (date.now())
+
+User: thoughtText array not showing 
+
 
 
 
@@ -21,10 +24,7 @@ User: createdAt (date.now())
 
 Link to video demonstration: 
 
-![Tech Blog](./images/image1.png)
-![Tech Blog](./images/image2.png)
-![Tech Blog](./images/image3.png)
-![Tech Blog](./images/image4.png)
+![Social Media API](./images/image1.png)
 
 ## Table of Contents
 1.) <a href = "#License">License</a><br>

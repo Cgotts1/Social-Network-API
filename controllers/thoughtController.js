@@ -52,4 +52,51 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+  // /api/thoughts/:thoughtId/reactions
+  createReaction(req,res) {
+    let thoughtId = req.params.thoughtId
+    //res.json({success:thoughtId})
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $push: {reactions: {
+
+        reactionBody: req.body.reactionBody,
+        username: req.body.username
+
+      }} },
+      { runValidators: true, new: true }
+    )
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with this id!' })
+          : res.json(thought)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+
+  // TODO: Is it needed? Refer to README.md
+  getReactions(req, res) {
+    Reaction.find()
+      .then((reactions) => res.json(reactions))
+      .catch((err) => res.status(500).json(err));
+  },
+
+  deleteReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $pull: { reactions: { reactionId: req.params.reactionId } } },
+      { runValidators: true, new: true }
+    )
+      .then((thought) =>
+        !thought
+          ? res
+              .status(404)
+              .json({ message: 'No thought found with that ID :(' })
+          : res.json(thought)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
 };
+ // export
+

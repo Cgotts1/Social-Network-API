@@ -11,9 +11,10 @@ module.exports = {
   // Get all users
   getUsers(req, res) {
     User.find()
-      .then(async (users) => {
+      .then(async (users, thought) => {
         const userObj = {
           users,
+          thought,
           headCount: await headCount(),
         };
         return res.json(userObj);
@@ -32,7 +33,6 @@ module.exports = {
           ? res.status(404).json({ message: 'No user with that ID' })
           : res.json({
               user,
-              // grade: await grade(req.params.userId),
             })
       )
       .catch((err) => {
@@ -85,39 +85,4 @@ module.exports = {
         )
         .catch((err) => res.status(500).json(err));
     },
-
-  // Add an reaction to a user
-  addReaction(req, res) {
-    console.log('You are adding a reaction');
-    console.log(req.body);
-    User.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $addToSet: { reactions: req.body } },
-      { runValidators: true, new: true }
-    )
-      .then((user) =>
-        !user
-          ? res
-              .status(404)
-              .json({ message: 'No user found with that ID :(' })
-          : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
-  // Remove reaction from a user
-  removeReaction(req, res) {
-    User.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $pull: { reaction: { reactionId: req.params.reactionId } } },
-      { runValidators: true, new: true }
-    )
-      .then((user) =>
-        !user
-          ? res
-              .status(404)
-              .json({ message: 'No user found with that ID :(' })
-          : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
 };
