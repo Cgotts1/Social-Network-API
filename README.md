@@ -4,27 +4,12 @@
 N/A
 
 ## <section id = "Description">Description</section>
-Whats working so far:
 
-User: post(email validation working), delete, put, get(all), get(single)
-Thoughts: post(Date format works), delete, put, get(all), get(single)
-
-
-
-Whats not working so far:
-
-User: thoughtText array not showing 
-
-
-
-
-
-
-
+This is a backend web application that was made made using MongoDB and Express. Users of the application can make an account, add/delete friends, create/update thoughts and create reactions. Insomnia was used to test all get, post, put, and delete routes.
 
 Link to video demonstration: 
 
-![Social Media API](./images/image1.png)
+![Social Media API](./images/image1.jpg)
 
 ## Table of Contents
 1.) <a href = "#License">License</a><br>

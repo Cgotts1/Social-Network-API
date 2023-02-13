@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 const friendSchema = require('./Friend');
+const thoughtSchema = require('./Thought');
 
 
 // Schema to create user model
@@ -17,15 +18,14 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      // validate: [validateEmail, 'Please fill a valid email address'],
       match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
     },
     // Array of `_id` values referencing the `Thought` model
-    thoughts: [{type: Schema.Types.ObjectId, ref: "thought"}],    
-    // Array of `_id` values referencing the `User` model (self-reference)
-    // friends: [{type: Schema.Types.ObjectId, ref: "user"}],
-    friends: [ friendSchema],
+    thoughts: [{type: Schema.Types.ObjectId, ref: "thought"}],     
+    // thoughts: [thoughtSchema],     
 
+    // Array of `_id` values referencing the `User` model (self-reference)
+    friends: [ friendSchema],
   },
   {
     toJSON: {
@@ -33,22 +33,6 @@ const userSchema = new Schema(
     },
   }
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 userSchema
   .virtual('friendCount')
