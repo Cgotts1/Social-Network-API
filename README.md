@@ -7,7 +7,7 @@ N/A
 
 This is a backend web application that was made made using MongoDB and Express. Users of the application can make an account, add/delete friends, create/update thoughts and create reactions. Insomnia was used to test all get, post, put, and delete routes.
 
-Link to video demonstration: 
+Link to video demonstration: https://drive.google.com/file/d/1L6d3_9t114KoMCppGDGdinWhuvh0C1m6/view 
 
 ![Social Media API](./images/image1.jpg)
 
