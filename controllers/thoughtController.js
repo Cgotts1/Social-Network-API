@@ -75,13 +75,6 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // TODO: Is it needed? Refer to README.md
-  getReactions(req, res) {
-    Reaction.find()
-      .then((reactions) => res.json(reactions))
-      .catch((err) => res.status(500).json(err));
-  },
-
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },

@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
+const friendSchema = require('./Friend');
+
 
 // Schema to create user model
 const userSchema = new Schema(
@@ -21,7 +23,9 @@ const userSchema = new Schema(
     // Array of `_id` values referencing the `Thought` model
     thoughts: [{type: Schema.Types.ObjectId, ref: "thought"}],    
     // Array of `_id` values referencing the `User` model (self-reference)
-    friends: [{type: Schema.Types.ObjectId, ref: "user"}],
+    // friends: [{type: Schema.Types.ObjectId, ref: "user"}],
+    friends: [ friendSchema],
+
   },
   {
     toJSON: {
@@ -29,6 +33,21 @@ const userSchema = new Schema(
     },
   }
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 userSchema
